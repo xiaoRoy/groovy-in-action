@@ -1,3 +1,5 @@
+package com.learn.groovyinaction.chap2
+
 class Book{
 
     private String title
