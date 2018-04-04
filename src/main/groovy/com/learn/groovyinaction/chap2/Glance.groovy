@@ -23,3 +23,20 @@ assert numberRange.contains(2)
 assert numberRange.size() == 10
 assert numberRange.from == 1
 assert numberRange.to == 10
+
+
+def totalClinks = 0
+def partyPeople = 100
+1.upto(partyPeople, {guestIndex ->
+    def clink = guestIndex - 1
+    totalClinks += clink
+})
+assert totalClinks == (partyPeople * (partyPeople-1)) / 2
+totalClinks = 0
+
+
+1.upto(partyPeople) {guestIndex ->
+    def clink = guestIndex - 1
+    totalClinks += clink
+}
+assert totalClinks == (partyPeople * (partyPeople-1)) / 2
