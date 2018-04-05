@@ -40,3 +40,13 @@ totalClinks = 0
     totalClinks += clink
 }
 assert totalClinks == (partyPeople * (partyPeople-1)) / 2
+
+def numberList = [1, 2, 3, 4]
+numberList.each {print it}
+
+if(null){
+   //never reach
+    assert false
+} else {
+    assert true
+}
