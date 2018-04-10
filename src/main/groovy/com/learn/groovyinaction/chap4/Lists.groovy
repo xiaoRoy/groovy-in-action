@@ -90,3 +90,13 @@ assert oneTwoThree.every { it < 5 }
 def log = ''
 oneTwoThree.eachWithIndex{ element, index -> log += "$index:$element "}
 assert log == '0:1 1:2 2:3 '
+
+def result = oneTwoThree.inject(0) {
+    int sum, int element -> sum + element
+}
+assert result == 6
+
+def factorial = (1..5).toList().inject(1) {
+    int fac, int element -> fac * element
+}
+assert factorial == 120
