@@ -100,3 +100,16 @@ def factorial = (1..5).toList().inject(1) {
     int fac, int element -> fac * element
 }
 assert factorial == 120
+
+def quickSort (List<Integer> list) {
+    if (list.size() == 1) return list
+    def pivot = list[list.size().intdiv(2).toInteger()]
+    def left = list.findAll { it < pivot }
+    def middle = list.findAll{it == pivot}
+    def right = list.findAll { it > pivot }
+    return quickSort(left) + middle + quickSort(right)
+}
+
+assert [1] == quickSort([1])
+assert [1, 2] == quickSort([2, 1])
+assert quickSort([3,1,2,2]) == [1, 2, 2, 3]
