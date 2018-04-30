@@ -102,7 +102,7 @@ def factorial = (1..5).toList().inject(1) {
 assert factorial == 120
 
 def quickSort (List<Integer> list) {
-    if (list.size() == 1) return list
+    if (list.size() < 2) return list
     def pivot = list[list.size().intdiv(2).toInteger()]
     def left = list.findAll { it < pivot }
     def middle = list.findAll{it == pivot}
@@ -113,3 +113,15 @@ def quickSort (List<Integer> list) {
 assert [1] == quickSort([1])
 assert [1, 2] == quickSort([2, 1])
 assert quickSort([3,1,2,2]) == [1, 2, 2, 3]
+
+def urls = [
+        new URL('http', 'myshop.com', 80, 'index.html'),
+        new URL('https', 'myshop.com', 443, 'buynow.html'),
+        new URL('ftp', 'myshop.com', 21, 'downloads')
+]
+
+assert urls
+        .findAll{it.port < 99}
+        .collect{it.file.toUpperCase()}
+        .sort()
+        .join(', ') == 'DOWNLOADS, INDEX.HTML'
