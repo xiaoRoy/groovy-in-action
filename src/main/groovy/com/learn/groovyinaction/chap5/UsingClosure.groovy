@@ -34,10 +34,26 @@ def static paramType (Closure closure) {
 assert paramType { String text -> } == [String]
 assert paramType { Number number, String text -> } == [Number, String]
 
-def mult = { one, another -> one * another }
-def twoTimes = mult.curry(2)
+def mul = { one, another -> one * another }
+def twoTimes = mul.curry(2)
 assert twoTimes(5) == 10
-def twoTimesB = { another -> mult(2, another) }
+def twoTimesB = { another -> mul(2, another) }
 assert twoTimesB(6) == 12
-def twoTimesC = { another -> mult 2, another}
+def twoTimesC = { another -> mul 2, another }
 assert twoTimesC.call(7) == 14
+
+def configurator = { format, filter, line -> filter(line) ? format(line) : null }
+def appender = { config, append, line ->
+    def out = config(line)
+    if (out) append(out)
+}
+
+def dateFormatter = { line -> "${new Date()}:$line" }
+def debugFilter = { line -> line.contains('debug') }
+def consoleAppender = { line -> println line }
+
+def defaultConfig = configurator.curry(dateFormatter, debugFilter)
+def defaultLog = appender.curry(defaultConfig, consoleAppender)
+
+defaultLog('here is some debug message')
+defaultLog('this will not be printed')
