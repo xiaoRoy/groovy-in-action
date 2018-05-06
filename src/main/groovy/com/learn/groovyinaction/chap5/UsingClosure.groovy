@@ -57,3 +57,7 @@ def defaultLog = appender.curry(defaultConfig, consoleAppender)
 
 defaultLog('here is some debug message')
 defaultLog('this will not be printed')
+
+def fourTimes = twoTimes >> twoTimes
+def eightTimes = fourTimes << twoTimes
+assert eightTimes(1) == twoTimes(fourTimes(1))
