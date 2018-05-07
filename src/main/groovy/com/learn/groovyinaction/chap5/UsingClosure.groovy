@@ -61,3 +61,8 @@ defaultLog('this will not be printed')
 def fourTimes = twoTimes >> twoTimes
 def eightTimes = fourTimes << twoTimes
 assert eightTimes(1) == twoTimes(fourTimes(1))
+
+def fib
+fib = { it < 2 ? 1 : fib(it - 1) + fib(it - 2)}
+fib = fib.memoize()
+assert fib(40) == 165_580_141
