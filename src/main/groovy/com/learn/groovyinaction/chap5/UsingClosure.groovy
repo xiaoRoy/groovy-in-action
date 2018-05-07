@@ -71,3 +71,9 @@ def last
 last = { it.size() == 1 ? it.head() : last.trampoline(it.tail()) }
 last = last.trampoline()
 assert last(0..10_000) == 10_000
+
+def odd = { it % 2 == 0 }
+assert [1, 2, 3].grep { odd } == [1, 3]
+switch (odd) {
+    case odd: assert false
+}
