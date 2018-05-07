@@ -63,6 +63,11 @@ def eightTimes = fourTimes << twoTimes
 assert eightTimes(1) == twoTimes(fourTimes(1))
 
 def fib
-fib = { it < 2 ? 1 : fib(it - 1) + fib(it - 2)}
+fib = { it < 2 ? 1 : fib(it - 1) + fib(it - 2) }
 fib = fib.memoize()
 assert fib(40) == 165_580_141
+
+def last
+last = { it.size() == 1 ? it.head() : last.trampoline(it.tail()) }
+last = last.trampoline()
+assert last(0..10_000) == 10_000
