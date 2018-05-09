@@ -2,7 +2,7 @@ package com.learn.groovyinaction.chap5
 
 def count = 0
 10.times {
-    count ++
+    count++
 }
 assert count == 10
 
@@ -16,3 +16,17 @@ assert closure.thisObject == host
 assert closure.owner == host
 assert closure.delegate == host
 assert closure.resolveStrategy == Closure.OWNER_FIRST
+
+def map = [:]
+map.with {
+    put('a', 1)
+    b = 2
+}
+assert map == [a: 1, b: 2]
+
+def static createAccumulator (number){
+    return { number += it }
+}
+def accumulator = createAccumulator(1)
+assert accumulator(2) == 3
+assert accumulator(1) == 4
