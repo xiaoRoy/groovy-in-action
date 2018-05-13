@@ -3,11 +3,17 @@ package com.learn.tutorial.closure
 class EnclosedInInnerClass {
 
     class Inner {
-        Closure closure = { this }
+        Closure closureThis = { this }
+        Closure closureOwner = { owner }
     }
 
-    void run () {
+    void thisRun () {
         Inner inner = new Inner()
-        assert inner.closure() == inner
+        assert inner.closureThis() == inner
+    }
+
+    void ownerRun(){
+        Inner inner = new Inner()
+        assert inner.closureOwner() == inner
     }
 }

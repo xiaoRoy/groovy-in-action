@@ -2,11 +2,19 @@ package com.learn.tutorial.closure
 
 class NestedClosure {
 
-    void run(){
-        def outerClosure = {
-            def innerClosure = { this }
-            innerClosure()
+    void thisRun () {
+        def outerClosureThis = {
+            def innerClosureThis = { this }
+            innerClosureThis()
         }
-        assert outerClosure() == this
+        assert outerClosureThis() == this
+    }
+
+    void ownerRun (){
+        def outerClosureOwner = {
+            def innerClosureOwner = { owner }
+            innerClosureOwner()
+        }
+        assert outerClosureOwner() == outerClosureOwner
     }
 }
