@@ -15,4 +15,13 @@ class Enclosing {
         def whatIsOwner = { owner }
         assert whatIsOwner() == this
     }
+
+    void delegateRun () {
+        def closureA = { getDelegate() }
+        def closureB = { delegate }
+        assert closureA() == closureB.call()
+        assert closureA() == this
+        def enclosed = { { -> delegate }.call() }
+        assert enclosed() == enclosed
+    }
 }

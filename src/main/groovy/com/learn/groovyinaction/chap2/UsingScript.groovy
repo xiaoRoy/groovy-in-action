@@ -5,6 +5,6 @@ assert groovy.getTitle() == "Groovy In Action"
 assert getTitleBackwards(groovy) == "noitcA nI yvoorG"
 
 String getTitleBackwards(book){
-    String title = book.getTitle()
+    String title = book.name()
     return title.reverse()
 }
