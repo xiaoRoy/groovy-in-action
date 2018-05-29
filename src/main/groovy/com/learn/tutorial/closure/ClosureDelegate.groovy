@@ -24,5 +24,10 @@ assert upperCasedName() == 'SMITH'
 upperCasedName.delegate = dog
 assert upperCasedName() == 'DOG'
 
-/*def closureA = { println 'hello, groovy'}
+def someone = new Person(name: 'Tom')
+def upperCaseClosure = { name.toUpperCase() }
+upperCaseClosure.delegate = someone
+assert upperCaseClosure() == 'TOM'
+
+/*def closureA = { println 'hello,  groovy'}
 closureA.call(1)*/
