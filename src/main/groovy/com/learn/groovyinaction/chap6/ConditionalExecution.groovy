@@ -18,3 +18,6 @@ switch (10) {
     case ~/../: assert true; break
     default: assert false; break
 }
+
+def values = [1, 2, 3]
+assert 2 in values
