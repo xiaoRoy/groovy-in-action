@@ -28,3 +28,19 @@ assert new Object()
 
 assert ! new AlwaysFalse()
 
+/*
+* if(x = 2){
+*   print x //compiler error
+* }
+* */
+
+def x = 1
+if((x = 3)){
+    assert  x == 3
+}
+
+def store = []
+while(x = x -1){
+    store << x
+}
+assert store == [2, 1]
