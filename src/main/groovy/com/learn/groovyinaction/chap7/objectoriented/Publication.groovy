@@ -1,5 +1,5 @@
 package com.learn.groovyinaction.chap7.objectoriented
 
-trait HasId {
-    long id
+class Publication implements Entity{
+    String title
 }
