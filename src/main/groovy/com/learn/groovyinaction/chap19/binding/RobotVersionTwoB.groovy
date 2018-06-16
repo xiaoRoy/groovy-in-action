@@ -15,7 +15,7 @@ def bindingWithCollectEntries = new Binding(
         *: Direction.values().collectEntries { [(it.name()): it] }
 )
 
-def shell = new GroovyShell(this.class.classLoader, binding)
+def shell = new GroovyShell(this.class.classLoader, bindingWithCollectEntries)
 def script = """
     robot.move left
 """
