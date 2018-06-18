@@ -1,4 +1,4 @@
-package com.learn.groovyinaction.chap19.importcustomizer
+package com.learn.groovyinaction.chap19.config
 
 import com.learn.groovyinaction.chap19.Robot
 import org.codehaus.groovy.control.CompilerConfiguration
