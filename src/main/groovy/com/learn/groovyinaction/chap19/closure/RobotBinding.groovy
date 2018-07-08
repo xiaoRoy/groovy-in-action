@@ -13,6 +13,7 @@ class RobotBinding extends Binding {
         ]
     }
 
+    @Override
     def getVariable(String name){
         this.variables[name.toLowerCase()]
     }
