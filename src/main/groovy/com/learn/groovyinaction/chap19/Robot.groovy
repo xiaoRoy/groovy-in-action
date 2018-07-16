@@ -8,4 +8,8 @@ class Robot {
     void move(Direction direction, Distance distance){
         println "robot moved $direction by $distance"
     }
+
+    void move(Map map, Direction direction){
+        println "robot moved $direction by $m.by at ${m.at ?: '1 km/h'}"
+    }
 }

@@ -8,7 +8,7 @@ def binding = new Binding(robot: new Robot(), *: Direction.values().collectEntri
 })
 def shell = new GroovyShell(this.class.classLoader, binding)
 def script = """
-    @BaseScript(com.learn.groovyinaction.chap19.scriptclass.RobotBaseScript)
+    @BaseScript(RobotBaseScript)
     import groovy.transform.BaseScript
     
     move left
