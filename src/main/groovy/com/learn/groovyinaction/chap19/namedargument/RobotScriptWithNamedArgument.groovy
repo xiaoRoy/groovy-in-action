@@ -6,10 +6,10 @@ import com.learn.groovyinaction.chap19.Robot
 
 def robot = new Robot()
 def binding = new Binding([
-        'robot': robot,
-        'h'    : Duration.hour,
-        move   : robot.&move,
-        *      : Direction.values().collectEntries { [(it.name()): it] }
+        robot: robot,
+        h    : Duration.hour,
+        move : robot.&move,
+        *    : Direction.values().collectEntries { [(it.name()): it] }
 ])
 
 def shell = new GroovyShell(this.class.classLoader, binding)
