@@ -18,3 +18,6 @@ def incrementMajorProjectVersionExplicit = { ProjectVersion version -> version.m
 def projectVersionB = initProjectVersion(1, 10)
 incrementMajorProjectVersionExplicit(projectVersionB)
 assert projectVersionB.major == 2
+
+def returnNullClosure = { number -> println number }
+assert returnNullClosure(4) == null
