@@ -21,3 +21,6 @@ assert projectVersionB.major == 2
 
 def returnNullClosure = { number -> println number }
 assert returnNullClosure(4) == null
+
+def noArgumentsClosure = { -> 'No Arguments'}
+assert noArgumentsClosure() == 'No Arguments'
