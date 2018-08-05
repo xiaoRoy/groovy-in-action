@@ -19,7 +19,7 @@ def projectVersionB = initProjectVersion(1, 10)
 incrementMajorProjectVersionExplicit(projectVersionB)
 assert projectVersionB.major == 2
 
-def setFullProjectVersion = {  anotherProjectVersion, major, minor ->
+def setFullProjectVersion = { anotherProjectVersion, major, minor ->
     anotherProjectVersion.major = major
     anotherProjectVersion.minor = minor
 }
@@ -29,9 +29,30 @@ setFullProjectVersion(projectVersionC, 2, 1)
 assert projectVersionC.major == 2
 assert projectVersionC.minor == 1
 
+def projectVersionD = initProjectVersion(1, 10)
+def minorVersion = { projectVersionD.minor }
+assert minorVersion() == 10
 
-def returnNullClosure = { number -> println number }
-assert returnNullClosure(4) == null
+
+Integer incrementVersion (Closure closure, Integer count) {
+    closure() + count
+}
+
+
+def projectVersionE = initProjectVersion(1, 10)
+assert incrementVersion({ projectVersionE.minor }, 2) == 12
+
+Integer incrementVersionLastClosure (Integer count, Closure closure) {
+    count + closure()
+}
+
+def projectVersionF = initProjectVersion(1, 10)
+assert incrementVersionLastClosure(2) {
+    projectVersionF.minor
+} == 12
 
 def noArgumentsClosure = { -> 'No Arguments' }
 assert noArgumentsClosure() == 'No Arguments'
+
+def returnNullClosure = { number -> println number }
+assert returnNullClosure(4) == null
