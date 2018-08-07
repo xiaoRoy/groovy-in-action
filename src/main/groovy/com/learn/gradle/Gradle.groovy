@@ -51,6 +51,17 @@ assert incrementVersionLastClosure(2) {
     projectVersionF.minor
 } == 12
 
+def projectVersionG = initProjectVersion(1, 10)
+projectVersionG.increment {
+    major += 1
+}
+assert projectVersionG.major == 2
+projectVersionG.increment {
+    minor += 2
+}
+assert projectVersionG.minor == 12
+
+
 def noArgumentsClosure = { -> 'No Arguments' }
 assert noArgumentsClosure() == 'No Arguments'
 
